@@ -1,0 +1,59 @@
+{{template "base.tmpl"}}
+{{ define "title"}}<title>Fitting {{.Fit.FitID}}</title>{{ end }}
+{{ define "content" }}
+	<div class="container">
+	<center>
+		<button type="button" class="btn btn-default">Reload</button>
+		<button type="button" class="btn btn-warning">Clear</button>
+		<button type="button" class="btn btn-success" onclick="SaveFit({{.Fit.FitID}})">Save</button>
+	</center>
+	<script type="text/javascript" src="/js/fitting.js"></script>
+	<script type="text/javascript" src="/js/modules.js"></script>
+	<script type="text/javascript" src="/js/modules-picker.js"></script>
+	<div id="item-picker" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Item Chooser</h4>
+				</div>
+				<div class="modal-body">
+					<p>Pick an item.</p>
+					<select id="category-picker" onchange="ItemCategoryChange();"><option>Populating...</option></select>
+					<select name="TypeID"id="module-picker"><option>Populating...</option></select>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="ChooseItem(currentSel)">Choose Item</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h3>High-Slots</h3>
+	<div id="high-slots" class="row">
+
+	</div>
+	<h3>Low-Slots</h3>
+	<div id="low-slots" class="row">
+
+	</div>
+	<h3>Other</h3>
+	<div id="light-slots" class="row">
+		<p class="text-warning">Light Weapon</p>
+	</div>
+	<div id="sidearm-slots" class="row">
+		<p class="text-warning">Sidearm</p>
+	</div>
+	<div id="heavy-slots" class="row">
+		<p class="text-warning">Heavy Weapon</p>
+	</div>
+	<div id="equipment-slots" class="row">
+		<p class="text-warning">Equipment</p>
+	</div>
+	<script type="text/javascript">
+	//<![CDATA[
+	GenerateSlots({{ .Fit.FitID }});
+	//]]>
+	</script>
+	</div>
+{{ end }}

@@ -1,0 +1,10 @@
+{{template "base.tmpl"}}
+{{ define "title"}}<title>Login</title>{{ end }}
+{{ define "content" }}
+	<form method="post" action="/login">
+		<p><input type="username" name="username" value="" placeholder="Username or Email"></p>
+		<p><input type="password" name="password" value="" placeholder="Password"></p>
+		</p>
+		<p class="submit"><input type="submit" name="commit" value="Login"></p>
+	</form>
+{{ end }}

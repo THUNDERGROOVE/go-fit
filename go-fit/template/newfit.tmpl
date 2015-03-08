@@ -1,0 +1,26 @@
+{{template "base.tmpl"}}
+{{ define "title"}}<title>New Fit</title>{{ end }}
+{{ define "content" }}
+	{{if eq .Method "GET"}}
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">New Fitting</h3>
+			</div>
+			<div class="panel-body">
+				<form method="POST" action="/newfit">
+					<select class="form-control" id="type-picker" onchange="PickerChange();">
+						<option>Populating...</option>
+					</select>
+					<select class="form-control" name="TypeID"id="suit-picker"></select>
+					<input class="btn btn-success" type="submit" name="commit" value="Continue">
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="/js/suits.js"></script>
+	<script src="/js/suit-picker.js"></script>
+	{{else}}
+		<h3>Redirecting...</h3>
+	{{end}}
+{{ end }}

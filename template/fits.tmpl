@@ -1,0 +1,35 @@
+{{ template "base.tmpl" }}
+{{ define "title"}}<title>Manage Fittings</title>{{ end }}
+{{ define "content" }}
+
+	<div class="panel panel-default">
+		<div class="panel-heading">Fitting managment</div>
+		<table class="table">
+			<tr>
+				<th>FitID</th>
+				<th>Fit Name</th>
+				<th>Suit</th>
+				<th>Owner</th>
+			</tr>
+			{{range .Fits}}
+				<tr id="fit-{{.FitID}}">
+					<td>{{ .FitID }}</td>
+					<td id="fit-{{.FitID}}-name">{{ .Name }}</td>
+					<td>{{ .SDEType.GetName }}</td>
+					<td>{{ .Owner }}</td>
+					<td>
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								Action <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a onclick="DeleteFit({{.FitID}});">Delete</a></li>
+								<li><a onclick="RenameFit({{.FitID}},{{.Name}});">Rename</a></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			{{end}}
+		</table>
+	</div>
+{{ end }}

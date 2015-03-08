@@ -1,0 +1,5 @@
+database/
+*.txt
+*.zip
+*.exe
+*.json
